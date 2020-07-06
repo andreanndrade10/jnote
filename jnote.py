@@ -34,8 +34,6 @@ def class_percentage_general():
     
     return round(percent_class_A,2), round(percent_class_B,2),round(percent_class_C,2), round(percent_class_D,2), round(percent_class_E,2),round(percent_class_F,2),round(percent_class_G,2), round(percent_class_H,2), round(percent_class_I,2)
 
-
-
 def class_percentage_regiao(lugar):
     regiao_group = df[df.Regiao == lugar]
     percent_class_A = (len(regiao_group[regiao_group.Classe=='Classe A']) / (regiao_group['Classe'].count()))*100
@@ -63,7 +61,6 @@ def class_percentage_estado(lugar):
     return round(percent_class_A,2), round(percent_class_B,2),round(percent_class_C,2), round(percent_class_D,2), round(percent_class_E,2),round(percent_class_F,2),round(percent_class_G,2), round(percent_class_H,2), round(percent_class_I,2)
 
 # Return list with percentage (grande, média, pequena)
-
 def size_percentage(lugar):
     if lugar.capitalize() in ['Norte', 'Sul', 'Nordeste', 'Centro-oeste', 'Sudeste']:
         return size_percentage_regiao(lugar)
@@ -74,14 +71,12 @@ def size_percentage(lugar):
     else:
         return size_percentage_general()
 
-
 def size_percentage_general():
     percentage_pequena = (len(df[df.Tamanho == 'Pequena']) / len(df))*100
     percentage_media = (len(df[df.Tamanho == 'Média']) / len(df))*100
     percentage_grande = (len(df[df.Tamanho == 'Grande']) / len(df))*100
     return round(percentage_grande,2), round(percentage_media,2), round(percentage_pequena,2)
     
-
 def size_percentage_regiao(lugar):
     regiao_group = df[df.Regiao==lugar]
     percentage_pequena = (len(regiao_group[regiao_group.Tamanho == 'Pequena'])/len(regiao_group))*100
@@ -97,7 +92,6 @@ def size_percentage_estado(lugar):
     return round(percentage_grande,2), round(percentage_media,2), round(percentage_pequena,2)
     
 # Escolaas Individualmente
-
 def change_priority(school_name):
     maturities = []
     #pandas_index = df.index[df['Unidade'] == 'CFP Candeias'].tolist()
@@ -124,7 +118,6 @@ def get_classe(name_school):
     index = df[df['Unidade']==name_school].index.tolist()[0]
     classe = df['Classe'][index]
     return classe
-
 
 def specific_infra(name_school):
     questions = [36,38,47,68]
@@ -175,9 +168,6 @@ def check_link_quality(name_school, bandwidth):
         return False
     else:
         return True
-
-
-
 
 # In this case, we will use the DataFrame 'df' not df_questions!!!
 def specific_contentMaturity(name_school):
