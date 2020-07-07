@@ -44,7 +44,7 @@ def class_percentage_general():
     return round(percent_class_A,2), round(percent_class_B,2),round(percent_class_C,2), round(percent_class_D,2), round(percent_class_E,2),round(percent_class_F,2),round(percent_class_G,2), round(percent_class_H,2), round(percent_class_I,2)
 '''
 
-def class_percentage_regiao_2(lugar):
+def class_percentage_regiao(lugar):
     regiao_group = df[df.Regiao == lugar]
     percent_class_A_to_I = []
     classes = ['A','B','C','D','E','F','G','H','I']
@@ -52,6 +52,8 @@ def class_percentage_regiao_2(lugar):
     for i in classes:
         percent_class_A_to_I.append(round((len(regiao_group[regiao_group.Classe=='Classe {}'.format(i)]) / (regiao_group['Classe'].count()))*100, 2))
     return percent_class_A_to_I
+
+'''
 
 def class_percentage_regiao(lugar):
     regiao_group = df[df.Regiao == lugar]
@@ -65,7 +67,7 @@ def class_percentage_regiao(lugar):
     percent_class_H = (len(regiao_group[regiao_group.Classe=='Classe H']) / (regiao_group['Classe'].count()))*100
     percent_class_I = (len(regiao_group[regiao_group.Classe=='Classe I']) / (regiao_group['Classe'].count()))*100
     return round(percent_class_A,2), round(percent_class_B,2),round(percent_class_C,2), round(percent_class_D,2), round(percent_class_E,2),round(percent_class_F,2),round(percent_class_G,2), round(percent_class_H,2), round(percent_class_I,2)
-
+'''
 def class_percentage_estado(lugar):
     estado_group = df[df.UF == lugar]
     percent_class_A = (len(estado_group[estado_group.Classe=='Classe A']) / (estado_group['Classe'].count()))*100
