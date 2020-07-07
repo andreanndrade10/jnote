@@ -21,6 +21,13 @@ def class_percentage(lugar):
         return class_percentage_general()
  
 
+def class_percentage_general_2():
+    percent_class_A_to_I = []
+    classes = ['A','B','C','D','E','F','G','H','I']
+
+    for i in classes:
+        percent_class_A_to_I.append(round((len(df[df.Classe == 'Classe {}'.format(i)]) / len(df))*100, 2))
+    return percent_class_A_to_I
 def class_percentage_general():
     percent_class_A = Decimal((len(df[df.Classe == 'Classe A']) / len(df))*100)
     percent_class_B = Decimal((len(df[df.Classe == 'Classe B']) / len(df))*100)
