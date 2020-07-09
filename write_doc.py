@@ -1,6 +1,8 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
 from docx import Document
 from jnote import *
-#teste
+
 def write_table_rede_cabeada(school_name):
     index = df_questions[df_questions['Unidade']==school_name].index.tolist()[0]
 
