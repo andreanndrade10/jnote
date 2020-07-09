@@ -146,8 +146,6 @@ def write_unidades(unidade):
     p.add_run(change_priority(unidade)).italic = True
     write_specifics(unidade)
 
-
-
 def write_doc():
     for i in df['Regiao'].unique():
         write_regiao(i)

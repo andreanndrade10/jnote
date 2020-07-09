@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-from decimal import Decimal
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 df_region = pd.read_excel('db.xlsx', 'regiao')
 df_region['Regiao'] = df_region['Regiao'].map(lambda regiao: regiao.split()[-1])
@@ -20,7 +21,6 @@ def class_percentage(lugar):
     else:
         return class_percentage_general()
  
-
 def class_percentage_general():
     percent_class_A_to_I = []
     classes = ['A','B','C','D','E','F','G','H','I']
@@ -28,8 +28,6 @@ def class_percentage_general():
     for i in classes:
         percent_class_A_to_I.append(round((len(df[df.Classe == 'Classe {}'.format(i)]) / len(df))*100, 2))
     return percent_class_A_to_I
-
-
 
 def class_percentage_regiao(lugar):
     regiao_group = df[df.Regiao == lugar]
@@ -39,7 +37,6 @@ def class_percentage_regiao(lugar):
     for i in classes:
         percent_class_A_to_I.append(round((len(regiao_group[regiao_group.Classe=='Classe {}'.format(i)]) / (regiao_group['Classe'].count()))*100, 2))
     return percent_class_A_to_I
-
 
 def class_percentage_estado(lugar):
     estado_group = df[df.UF == lugar]
@@ -173,3 +170,14 @@ def specific_contentMaturity(name_school):
         return 'Infraestrutura possui firewall, mas carece de Proxy ou NAC'
     if grade_content_maturity == 7:
         return 'Infraestrutura possui Next Generation Firewall sem NAC ou Firewall/Proxy com NAC'
+
+#plot graphs
+def plot_graph_class(lugar):
+    total = len(df)
+    ax = sns.countplot(x='Classe', data=df, palette='Blues')
+    for p in ax.patches:
+        height = p.get_height()
+        ax.text(p.get_x()+p.get_width()/2., height, '{:1.2f}%'.format(100*height/total), ha='center')
+    plt.savefig('img/graph_class_{}.png'.format(lugar))
+    #plt.show()
+
