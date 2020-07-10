@@ -173,11 +173,24 @@ def specific_contentMaturity(name_school):
 
 #plot graphs
 def plot_graph_class(lugar):
-    total = len(df)
-    ax = sns.countplot(x='Classe', data=df, palette='Blues')
-    for p in ax.patches:
-        height = p.get_height()
-        ax.text(p.get_x()+p.get_width()/2., height, '{:1.2f}%'.format(100*height/total), ha='center')
-    plt.savefig('img/graph_class_{}.png'.format(lugar))
-    #plt.show()
+    #lugar is a state
+    if len(lugar) == 2:
+        df_uf = df[df['UF']==lugar]
+        total = len(df_uf)
+        ax = sns.countplot(x='Classe', data=df_uf, palette='Blues')
+        #add percentage above charts
+        for p in ax.patches:
+            height = p.get_height()
+            ax.text(p.get_x()+p.get_width()/2., height+0.1, '{:1.2f}%'.format(100*height/total), ha='center')
+        plt.savefig('img/graph_class/graph_class_{}.png'.format(lugar))
+        ax=0
+    else:
+        df_regiao = df[df['Regiao']==lugar]
+        total = len(df_regiao)
+        ax = sns.countplot(x='Classe', data=df_regiao, palette='Blues')
+        for p in ax.patches:
+            height = p.get_height()
+            ax.text(p.get_x()+p.get_width()/2., height, '{:1.2f}%'.format(100*height/total), ha='center')
+        plt.savefig('img/graph_class/graph_class_{}.png'.format(lugar))
+        ax=0
 
