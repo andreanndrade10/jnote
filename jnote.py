@@ -183,7 +183,7 @@ def plot_graph_class(lugar):
             height = p.get_height()
             ax.text(p.get_x()+p.get_width()/2., height+0.1, '{:1.2f}%'.format(100*height/total), ha='center')
         plt.savefig('img/graph_class/graph_class_{}.png'.format(lugar))
-        ax=0
+        plt.clf()
     else:
         df_regiao = df[df['Regiao']==lugar]
         total = len(df_regiao)
@@ -192,5 +192,5 @@ def plot_graph_class(lugar):
             height = p.get_height()
             ax.text(p.get_x()+p.get_width()/2., height, '{:1.2f}%'.format(100*height/total), ha='center')
         plt.savefig('img/graph_class/graph_class_{}.png'.format(lugar))
-        ax=0
+        plt.clf()
 
