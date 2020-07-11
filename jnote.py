@@ -194,3 +194,23 @@ def plot_graph_class(lugar):
         plt.savefig('img/graph_class/graph_class_{}.png'.format(lugar))
         plt.clf()
 
+def plot_graph_size(lugar):
+    if len(lugar)==2:
+        df_uf = df[df['UF']==lugar]
+        total = len(df_uf)
+        ax = sns.countplot(x='Tamanho', data=df_uf, palette='Blues')
+        for p in ax.patches:
+            height = p.get_height()
+            ax.text(p.get_x()+p.get_width()/2., height+0.1, '{:1.2f}%'.format(100*height/total), ha='center')
+        plt.savefig('img/graph_size/graph_size_{}.png'.format(lugar))
+        plt.clf()
+    else:
+        df_regiao = df[df['Regiao']==lugar]
+        total = len(df_regiao)
+        ax = sns.countplot(x='Tamanho', data=df_regiao, palette='Blues')
+        for p in ax.patches:
+            height = p.get_height()
+            ax.text(p.get_x()+p.get_width()/2., height, '{:1.2f}%'.format(100*height/total), ha='center')
+        plt.savefig('img/graph_size/graph_size_{}.png'.format(lugar))
+        plt.clf()
+
