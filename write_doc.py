@@ -126,16 +126,27 @@ def write_percentage_size(lugar):
             text =  size[i] + ': ' + str(size_percentage(lugar)[i]) + '%'
             document.add_paragraph(text, style='List 2')
 
+def write_plot_class(lugar):
+    plot_graph_class(lugar)
+    document.add_picture('img/graph_class/graph_class_{}.png'.format(lugar))
+
+def write_plot_size(lugar):
+    plot_graph_size(lugar)
+    document.add_picture('img/graph_size/graph_size_{}.png'.format(lugar))
 
 def write_regiao(regiao):
     document.add_heading(regiao, level=1)
-    write_percentage_class(regiao)
-    write_percentage_size(regiao)
+    write_plot_class(regiao)
+    #write_percentage_class(regiao)
+    write_plot_size(regiao)
+    #write_percentage_size(regiao)
 
 def write_estado(estado):
     document.add_heading(estado, level=2)
-    write_percentage_class(estado)
-    write_percentage_size(estado)
+    write_plot_class(estado)
+    #write_percentage_class(estado)
+    write_plot_size(estado)
+    #write_percentage_size(estado)
 
 def write_unidades(unidade):
     document.add_paragraph(unidade, style='List Bullet')
