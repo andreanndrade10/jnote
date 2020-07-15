@@ -1,6 +1,7 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
 from docx import Document
+from docx.shared import Inches
 from jnote import *
 
 def write_table_rede_cabeada(school_name):
@@ -13,7 +14,7 @@ def write_table_rede_cabeada(school_name):
         ('Total de SW do modelo',df_questions[17][index],df_questions[26][index],df_questions[35][index],df_questions[45][index])
     )
 
-    table = document.add_table(rows=1, cols=5)
+    table = document.add_table(rows=1, cols=5, style='Medium Shading 1 Accent 5')
     hdr_cells = table.rows[0].cells
     hdr_cells[0].text = '        '
     hdr_cells[1].text = 'Modelo 3'
@@ -39,7 +40,7 @@ def write_table_wireless(school_name):
         ('Quantidade de Clientes total suportada','---',df_questions[74][index])
     )
 
-    table = document.add_table(rows=1, cols=3)
+    table = document.add_table(rows=1, cols=3, style='Medium Shading 1 Accent 5')
     hdr_cells = table.rows[0].cells
     hdr_cells[0].text = '        '
     hdr_cells[1].text = 'Access Point'
@@ -59,7 +60,7 @@ def write_table_conectividade(school_name):
         ('Provedor', df_questions[80][index], df_questions[85][index])
     )
 
-    table = document.add_table(rows=1, cols=3)
+    table = document.add_table(rows=1, cols=3, style='Medium Shading 1 Accent 5')
     hdr_cells = table.rows[0].cells
     hdr_cells[0].text = '        '
     hdr_cells[1].text = 'Link Primário (Mbps)'
@@ -79,7 +80,7 @@ def write_table_controle_de_conteudo(school_name):
         ('Tipo', df_questions[88][index], '---')
     )
 
-    table = document.add_table(rows=1, cols=3)
+    table = document.add_table(rows=1, cols=3 , style='Medium Shading 1 Accent 5')
     hdr_cells = table.rows[0].cells
     hdr_cells[0].text = '        '
     hdr_cells[1].text = 'Firewall'
@@ -128,11 +129,11 @@ def write_percentage_size(lugar):
 
 def write_plot_class(lugar):
     plot_graph_class(lugar)
-    document.add_picture('img/graph_class/graph_class_{}.png'.format(lugar))
+    document.add_picture('img/graph_class/graph_class_{}.png'.format(lugar), width=Inches(5.0))
 
 def write_plot_size(lugar):
     plot_graph_size(lugar)
-    document.add_picture('img/graph_size/graph_size_{}.png'.format(lugar))
+    document.add_picture('img/graph_size/graph_size_{}.png'.format(lugar), width=Inches(5.0))
 
 def write_regiao(regiao):
     document.add_heading(regiao, level=1)
