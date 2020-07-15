@@ -115,15 +115,19 @@ def write_specifics(school_name):
     document.add_paragraph(specific_infra(school_name))
     document.add_paragraph(specific_connection(school_name))
     document.add_paragraph(specific_contentMaturity(school_name))
-    #document.add_paragraph('Especificos', style = 'List Number')
+
 
 def write_plot_class(lugar):
     plot_graph_class(lugar)
-    document.add_picture('img/graph_class/graph_class_{}.png'.format(lugar), width=Inches(5.0))
+    img=document.add_picture('img/graph_class/graph_class_{}.png'.format(lugar), width=Inches(5.0))
+    last_paragraph = document.paragraphs[-1] 
+    last_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
 def write_plot_size(lugar):
     plot_graph_size(lugar)
-    document.add_picture('img/graph_size/graph_size_{}.png'.format(lugar), width=Inches(5.0))
+    img=document.add_picture('img/graph_size/graph_size_{}.png'.format(lugar), width=Inches(5.0))
+    last_paragraph = document.paragraphs[-1] 
+    last_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
 def write_regiao(regiao):
     document.add_heading(regiao, level=1)
