@@ -182,7 +182,7 @@ def plot_graph_class(lugar):
         #add percentage above charts
         for p in ax.patches:
             height = p.get_height()
-            ax.text(p.get_x()+p.get_width()/2., height+0.1, '{:1.2f}%'.format(100*height/total), ha='center')
+            ax.text(p.get_x()+p.get_width()/2., height, '{:1.2f}%'.format(100*height/total), ha='center')
         plt.savefig('img/graph_class/graph_class_{}.png'.format(lugar))
         plt.clf()
     else:
@@ -192,7 +192,7 @@ def plot_graph_class(lugar):
         ax.set_title('Distribuição de classes região {}'.format(lugar))
         for p in ax.patches:
             height = p.get_height()
-            ax.text(p.get_x()+p.get_width()/2., height+0.1, '{:1.2f}%'.format(100*height/total), ha='center')
+            ax.text(p.get_x()+p.get_width()/2., height, '{:1.2f}%'.format(100*height/total), ha='center')
         plt.savefig('img/graph_class/graph_class_{}.png'.format(lugar))
         plt.clf()
 
@@ -204,7 +204,7 @@ def plot_graph_size(lugar):
         ax.set_title('Distribuição de tamanho {}'.format(lugar))
         for p in ax.patches:
             height = p.get_height()
-            ax.text(p.get_x()+p.get_width()/2., height+0.1, '{:1.2f}%'.format(100*height/total), ha='center')
+            ax.text(p.get_x()+p.get_width()/2., height, '{:1.2f}%'.format(100*height/total), ha='center')
         plt.savefig('img/graph_size/graph_size_{}.png'.format(lugar))
         plt.clf()
     else:
@@ -214,7 +214,7 @@ def plot_graph_size(lugar):
         ax.set_title('Distribuição de tamanho região {}'.format(lugar))
         for p in ax.patches:
             height = p.get_height()
-            ax.text(p.get_x()+p.get_width()/2., height+0.1, '{:1.2f}%'.format(100*height/total), ha='center')
+            ax.text(p.get_x()+p.get_width()/2., height, '{:1.2f}%'.format(100*height/total), ha='center')
         plt.savefig('img/graph_size/graph_size_{}.png'.format(lugar))
         plt.clf()
 
