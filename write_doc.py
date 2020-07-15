@@ -94,15 +94,19 @@ def write_table_controle_de_conteudo(school_name):
         row_cells[2].text = str(c)
 ############
 def write_unit_tables(school_name):
+
     center=document.add_paragraph('Rede Cabeada')
     center.alignment = WD_ALIGN_PARAGRAPH.CENTER
     write_table_rede_cabeada(school_name)
+
     center=document.add_paragraph('Wireless')
     center.alignment = WD_ALIGN_PARAGRAPH.CENTER
     write_table_wireless(school_name)
+
     center=document.add_paragraph('Conectividade')
     center.alignment = WD_ALIGN_PARAGRAPH.CENTER
     write_table_conectividade(school_name)
+
     center=document.add_paragraph('Controle de Conteúdo')
     center.alignment = WD_ALIGN_PARAGRAPH.CENTER
     write_table_controle_de_conteudo(school_name)
@@ -114,24 +118,6 @@ def write_specifics(school_name):
     document.add_paragraph(specific_contentMaturity(school_name), style='List Continue 2')
     #document.add_paragraph('Especificos', style = 'List Number')
 
-
-def write_percentage_class(lugar):
-    explanation = 'Distribuição da classificação das escolas em {}'.format(lugar)
-    document.add_paragraph(explanation)
-    classe = ['A','B','C','D','E','F','G','H','I']
-    for i in range(len(class_percentage(lugar))):
-        if class_percentage(lugar)[i] != 0:
-            text = 'Classe ' + classe[i] + ': ' + str(class_percentage(lugar)[i]) + '%'
-            document.add_paragraph(text, style='List 2')
-
-def write_percentage_size(lugar):
-    explanation = 'Distribuição de tamanho das esolas em {}'.format(lugar)
-    document.add_paragraph(explanation)
-    size = ['Grande', 'Média', 'Pequena']
-    for i in range(len(size_percentage(lugar))):
-        if size_percentage(lugar)[i] != 0:
-            text =  size[i] + ': ' + str(size_percentage(lugar)[i]) + '%'
-            document.add_paragraph(text, style='List 2')
 
 def write_plot_class(lugar):
     plot_graph_class(lugar)
