@@ -111,13 +111,11 @@ def write_unit_tables(school_name):
     center.alignment = WD_ALIGN_PARAGRAPH.CENTER
     write_table_controle_de_conteudo(school_name)
 
-
 def write_specifics(school_name):
-    document.add_paragraph(specific_infra(school_name), style='List Continue 2')
-    document.add_paragraph(specific_connection(school_name), style='List Continue 2')
-    document.add_paragraph(specific_contentMaturity(school_name), style='List Continue 2')
+    document.add_paragraph(specific_infra(school_name))
+    document.add_paragraph(specific_connection(school_name))
+    document.add_paragraph(specific_contentMaturity(school_name))
     #document.add_paragraph('Especificos', style = 'List Number')
-
 
 def write_plot_class(lugar):
     plot_graph_class(lugar)
@@ -142,21 +140,24 @@ def write_estado(estado):
     #write_percentage_size(estado)
 
 def write_unidades(unidade):
-    document.add_paragraph(unidade, style='List Bullet')
+    document.add_heading(unidade, level=3)
     write_unit_tables(unidade)
-    a = document.add_paragraph('Classe pertencente: ', style='List 2')
+    a = document.add_paragraph('Classe pertencente: ')
     a.add_run(get_classe(unidade)) 
-    p = document.add_paragraph('Maior prioridade de mudança: ', style='List 2')
+    p = document.add_paragraph('Maior prioridade de mudança: ')
     p.add_run(change_priority(unidade)).italic = True
     write_specifics(unidade)
 
 def write_doc():
     for i in df['Regiao'].unique():
         write_regiao(i)
+        document.add_page_break()
         for j in df[df.Regiao==i]['UF'].unique():
             write_estado(j)
+            document.add_page_break()
             for k in df[df.UF==j]['Unidade']:
                 write_unidades(k)
+                document.add_page_break()
                 
 
 
