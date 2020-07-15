@@ -2,6 +2,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from docx import Document
 from docx.shared import Inches
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 from jnote import *
 
 def write_table_rede_cabeada(school_name):
@@ -91,16 +92,21 @@ def write_table_controle_de_conteudo(school_name):
         row_cells[0].text = str(a)
         row_cells[1].text = str(b)
         row_cells[2].text = str(c)
-
+############
 def write_unit_tables(school_name):
-    document.add_paragraph('Rede Cabeada', style='List Continue 3')
+    center=document.add_paragraph('Rede Cabeada')
+    center.alignment = WD_ALIGN_PARAGRAPH.CENTER
     write_table_rede_cabeada(school_name)
-    document.add_paragraph('Wireless', style='List Continue 3')
+    center=document.add_paragraph('Wireless')
+    center.alignment = WD_ALIGN_PARAGRAPH.CENTER
     write_table_wireless(school_name)
-    document.add_paragraph('Conectividade', style='List Continue 3')
+    center=document.add_paragraph('Conectividade')
+    center.alignment = WD_ALIGN_PARAGRAPH.CENTER
     write_table_conectividade(school_name)
-    document.add_paragraph('Controle de Conteúdo', style='List Continue 3')
+    center=document.add_paragraph('Controle de Conteúdo')
+    center.alignment = WD_ALIGN_PARAGRAPH.CENTER
     write_table_controle_de_conteudo(school_name)
+
 
 def write_specifics(school_name):
     document.add_paragraph(specific_infra(school_name), style='List Continue 2')
