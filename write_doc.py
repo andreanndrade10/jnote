@@ -144,10 +144,10 @@ def write_estado(estado):
     #write_percentage_size(estado)
 
 def write_unidades(unidade):
+    a = document.add_paragraph('Classe pertencente: ')
+    a.add_run(get_classe(unidade))
     document.add_heading(unidade, level=3)
     write_unit_tables(unidade)
-    a = document.add_paragraph('Classe pertencente: ')
-    a.add_run(get_classe(unidade)) 
     p = document.add_paragraph('Maior prioridade de mudança: ')
     p.add_run(change_priority(unidade)).italic = True
     write_specifics(unidade)
