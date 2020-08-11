@@ -121,8 +121,8 @@ def specific_infra(name_school):
         return 'Switches não suportam PoE'
     if evaluation[2] == 'Não':
         return 'Switches não suportam roteamento entre VLANs'
-    if '802.11ac' not in evaluation[3].split(';'):
-        return 'Protocolos suportados pelos APs podem ser melhorados'
+    #if '802.11ac' not in evaluation[3].split(';'):
+    #    return 'Protocolos suportados pelos APs podem ser melhorados'
 
 def specific_connection(name_school):
     questions = [78,79,84]
